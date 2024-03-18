@@ -227,7 +227,7 @@ function Rectangle(width, height) {
   this.height = height;
 }
 
-Rectangle.prototype.getArea = function () {
+Rectangle.prototype.getArea = function calculateArea() {
   return this.width * this.height;
 };
 
@@ -407,51 +407,35 @@ function group(array, keySelector, valueSelector) {
  *  For more examples see unit tests.
  */
 
-class cssSelectorBuilder {
-  constructor() {
-    this.selectors = [];
-  }
+const cssSelectorBuilder = {
+  element(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  element(value) {
-    this.selectors.push(value);
-    return this;
-  }
+  id(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  id(value) {
-    this.selectors.push(`#${value}`);
-    return this;
-  }
+  class(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  class(value) {
-    this.selectors.push(`.${value}`);
-    return this;
-  }
+  attr(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  attr(value) {
-    this.selectors.push(`[${value}]`);
-    return this;
-  }
+  pseudoClass(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  pseudoClass(value) {
-    this.selectors.push(`:${value}`);
-    return this;
-  }
+  pseudoElement(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-  pseudoElement(value) {
-    this.selectors.push(`::${value}`);
-    return this;
-  }
-
-  combine(selector1, combinator, selector2) {
-    const combinedSelector = `${selector1.stringify()} ${combinator} ${selector2.stringify()}`;
-    this.selectors.push(combinedSelector);
-    return this;
-  }
-
-  stringify() {
-    return this.selectors.join('');
-  }
-}
+  combine(/* selector1, combinator, selector2 */) {
+    throw new Error('Not implemented');
+  },
+};
 
 module.exports = {
   shallowCopy,
